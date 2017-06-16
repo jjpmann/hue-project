@@ -1,10 +1,11 @@
 'use strict';
 
+require('es6-promise').polyfill();
+
 var hue = require("node-hue-api"),
     HueApi = hue.HueApi,
     lightState = hue.lightState,
-    fs = require('fs'),
-    require('es6-promise').polyfill();
+    fs = require('fs');
  
 module.exports.bedroomToggle = function(){
 
