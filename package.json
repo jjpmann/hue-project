@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "control hue lights",
   "dependencies": {
+    "es6-promise": "^4.1.0",
+    "node-dash-button": "^0.6.1",
+    "object.assign": "^4.0.4",
+    "request": "^2.74.0"
   },
   "devDependencies": {},
   "scripts": {
