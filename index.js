@@ -34,10 +34,12 @@ module.exports.bedroomToggle = function(){
 
     function toggleGroup(state){
         api = new HueApi(hostname, username);
-        api.setGroupLightState(2, state)
-            .then(writeCurrent)
-            .done();
-        // writeCurrent();
+        api.setGroupLightState(2, state, function(err, lights){
+            if (err) {
+                return console.log(err);
+            }
+            writeCurrent();
+        })
     }
 
     function writeCurrent(){
