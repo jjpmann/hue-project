@@ -3,7 +3,8 @@
 var hue = require("node-hue-api"),
     HueApi = hue.HueApi,
     lightState = hue.lightState,
-    fs = require('fs');
+    fs = require('fs'),
+    require('es6-promise').polyfill();
  
 module.exports.bedroomToggle = function(){
 
