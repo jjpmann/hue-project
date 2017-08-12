@@ -6,12 +6,14 @@ Object.assign = require('object.assign');
 var hue = require("node-hue-api"),
     HueApi = hue.HueApi,
     lightState = hue.lightState,
-    fs = require('fs');
- 
-module.exports.bedroomToggle = function(){
+    fs = require('fs'),
+    obj = {};
 
-    var hostname = "192.168.1.72",
-        username = "z9yJlDTpeasDDI-5iAxUi0a6loBVrIA3EMuQKao5",
+
+var hueToggle = function(group){
+
+    var hostname = '192.168.1.72',
+        username = 'z9yJlDTpeasDDI-5iAxUi0a6loBVrIA3EMuQKao5',
         api,
         toggle = [
             lightState.create().on().bri(110),  // dim
@@ -19,7 +21,7 @@ module.exports.bedroomToggle = function(){
             lightState.create().off()           // off
         ],
         current = 0,
-        file = './master.toggle';
+        file = './group-' + group + '.toggle';
 
 
     fs.readFile(file, 'utf8', function (err,data) {
@@ -37,7 +39,7 @@ module.exports.bedroomToggle = function(){
 
     function toggleGroup(state){
         api = new HueApi(hostname, username);
-        api.setGroupLightState(2, state, function(err, lights){
+        api.setGroupLightState(group, state, function(err, lights){
             if (err) {
                 return console.log(err);
             }
@@ -55,3 +57,8 @@ module.exports.bedroomToggle = function(){
     }
 
 }
+
+obj.bedroom = function(){ hueToggle(2) };
+obj.basement = function(){ hueToggle(1) };
+
+module.exports = obj;

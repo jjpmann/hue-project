@@ -5,6 +5,7 @@
   "dependencies": {
     "es6-promise": "^4.1.0",
     "node-dash-button": "^0.6.1",
+    "node-hue-api": "^2.4.2",
     "object.assign": "^4.0.4",
     "request": "^2.74.0"
   },
